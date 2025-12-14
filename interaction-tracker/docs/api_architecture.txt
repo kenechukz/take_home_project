@@ -1,0 +1,59 @@
+1. **POST /api/interactions**
+    - Accept interaction data: `{ "user_id": string, "event_type": string, "metadata": object }`
+    - Validate required fields
+    - Store in a database with a timestamp
+    - Return the created interaction with an `id`
+
+
+
+app.route("/interactions")
+
+body {
+    "user_id": string, 
+    "event_type": string, 
+    "metadata": object
+}
+
+{
+    "user_id": "user_001",
+    "event_type": "page_view",
+    "metadata": {
+        "page": "/dashboard",
+        "referrer": "https://google.com",
+        "device": "desktop",
+        "browser": "Chrome"
+    }
+}
+
+if user doesn't exist, we add them to db of users
+validate event_type?? Don't think so
+metadata is json object
+
+
+2. **GET /api/interactions?user_id={user_id}&event_type={event_type}**
+    - Return all interactions, sorted by most recent first
+    - Support optional query parameter `user_id` to filter by user
+    - Support optional query parameter `event_type` to filter by event type
+
+GET /api/interactions - no filters:
+    returns all interactions in db
+
+GET /api/interactions?user_id=user_001 - filter by user only:
+    returns interactions for a given user_id, if they don't exist we return {}
+    
+GET /api/interactions?event_type=page_view - filter by event type only:
+    returns interactions for a given event_type, if event doesn't exist return {}
+
+
+GET /api/interactions?user_id=user_001&event_type=page_view - both filters:
+    returns interactions for a given event_type and user_id, if either doesn't exist return {}
+
+
+3. **GET /api/interactions/stats**
+    - Return summary statistics:
+        - Total interaction count
+        - Count by event type
+        - Count by user
+        - Most active user
+
+will use pandas for pyspark for this
