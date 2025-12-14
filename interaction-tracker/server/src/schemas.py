@@ -7,7 +7,7 @@ class EventType(str, Enum):
     page_view = "page_view"
     form_submit = "form_submit"
 
-class InteractionCreate(BaseModel):
+class InteractionCreatePayload(BaseModel):
     user_id: str = Field(..., min_length=1, max_length=255)
     event_type: EventType
     metadata: Optional[Dict[str, Any]] = Field(default=None)
@@ -18,3 +18,8 @@ class InteractionCreate(BaseModel):
         if v is not None and not isinstance(v, dict):
             raise ValueError("metadata must be an object")
         return v
+    
+    @field_validator("user_id")
+    @classmethod
+    def trim_user_id(cls, v):
+        return v.strip()

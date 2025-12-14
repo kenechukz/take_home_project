@@ -3,6 +3,7 @@ FastAPI application entry point for Interaction Tracker
 """
 
 from fastapi import FastAPI
+from routes import interactions
 from fastapi.middleware.cors import CORSMiddleware
 
 # Create FastAPI app instance
@@ -11,6 +12,7 @@ app = FastAPI(
     description="API for tracking user interactions",
     version="1.0.0"
 )
+app.include_router(interactions.router, prefix="/api")
 
 # Configure CORS for frontend access
 app.add_middleware(

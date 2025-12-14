@@ -58,7 +58,7 @@ def test_create_interaction_detects_invalid_json_format():
 
     # should raise:
     # raise HTTPException(
-    # status_code=400,
+    # status_code=422,
     # detail="Metadata not an object"
     assert response.status_code == 422
 
