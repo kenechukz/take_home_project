@@ -10,8 +10,8 @@ app.route("/interactions")
 
 body {
     "user_id": string, 
-    "event_type": string, 
-    "metadata": object
+    "event_type": enum(EventType), 
+    "metadata": object (nullable)
 }
 
 response:
@@ -19,7 +19,7 @@ response:
         {
             id: integer
             "user_id": string, 
-            "event_type": string, 
+            "event_type": enum(EventType), 
             "metadata": object
             created_at:
 
@@ -29,7 +29,7 @@ response:
 
 validation:
     user id string is not empty after trim
-    event_type not empty after trim
+    event_type is a valid event_type in event_type enum
     metadata an object and not a string, int, bool (optional size cap to avoid huge payload)
     reject any other fields
 

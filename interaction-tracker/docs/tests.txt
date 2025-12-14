@@ -1,0 +1,39 @@
+Required (from assignment):
+1. POST /api/interactions - Success case
+    - Create an interaction with valid data
+    - Assert it returns 201 status and includes an ID
+
+2. Error handling
+    - POST with missing user_id → 422 error
+    - POST with invalid JSON → 400 error
+
+3. GET /api/interactions - Filtering
+    - Filter by user_id
+    - Filter by event_type
+
+
+Additional Good Tests:
+4. GET /api/interactions - Sorting
+    - Verify results are sorted by most recent first
+
+5. GET /api/interactions/stats
+
+    - Verify total count
+    - Verify count by event type
+    - Verify most active user
+
+
+6. Edge cases
+    - POST with empty metadata (should work)
+    - GET with no results (empty list)
+
+
+
+FastAPI handles automatically:
+
+✅ 422 - Missing/invalid fields (Pydantic validation)
+✅ 500 - Unhandled exceptions (crashes)
+You manually raise:
+❌ 404 - Resource not found
+❌ 400 - Custom bad request logic
+❌ 500 - Custom error messages (database failures, etc.)

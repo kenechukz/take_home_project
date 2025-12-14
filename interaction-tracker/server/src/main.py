@@ -3,7 +3,7 @@ FastAPI application entry point for Interaction Tracker
 """
 
 from fastapi import FastAPI
-from routes import interactions
+from src.routes import interactions
 from fastapi.middleware.cors import CORSMiddleware
 
 # Create FastAPI app instance

@@ -11,7 +11,7 @@
   },
   {
     "user_id": "user_002",
-    "event_type": "button_click",
+    "event_type": "click",
     "metadata": {
       "button_id": "submit_form",
       "page": "/signup",
@@ -20,7 +20,7 @@
   },
   {
     "user_id": "user_001",
-    "event_type": "form_submission",
+    "event_type": "form_submit",
     "metadata": {
       "form_name": "contact_us",
       "fields_filled": 5,
@@ -38,39 +38,12 @@
     }
   },
   {
-    "user_id": "user_002",
-    "event_type": "video_play",
-    "metadata": {
-      "video_id": "intro_tutorial",
-      "duration": 120,
-      "quality": "1080p"
-    }
-  },
-  {
-    "user_id": "user_004",
-    "event_type": "search",
-    "metadata": {
-      "query": "python tutorials",
-      "results_count": 42,
-      "filter": "recent"
-    }
-  },
-  {
     "user_id": "user_001",
-    "event_type": "button_click",
+    "event_type": "click",
     "metadata": {
       "button_id": "add_to_cart",
       "product_id": "prod_789",
       "price": 29.99
-    }
-  },
-  {
-    "user_id": "user_003",
-    "event_type": "file_download",
-    "metadata": {
-      "file_name": "user_guide.pdf",
-      "file_size": 2048576,
-      "format": "pdf"
     }
   },
   {
@@ -85,7 +58,7 @@
   },
   {
     "user_id": "user_002",
-    "event_type": "form_submission",
+    "event_type": "form_submit",
     "metadata": {
       "form_name": "newsletter_signup",
       "email_provided": true,
@@ -94,7 +67,7 @@
   },
   {
     "user_id": "user_004",
-    "event_type": "button_click",
+    "event_type": "click",
     "metadata": {
       "button_id": "share_social",
       "platform": "twitter",
