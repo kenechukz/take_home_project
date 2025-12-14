@@ -14,6 +14,25 @@ body {
     "metadata": object
 }
 
+response:
+    interaction json object:
+        {
+            id: integer
+            "user_id": string, 
+            "event_type": string, 
+            "metadata": object
+            created_at:
+
+
+        }
+
+
+validation:
+    user id string is not empty after trim
+    event_type not empty after trim
+    metadata an object and not a string, int, bool (optional size cap to avoid huge payload)
+    reject any other fields
+
 {
     "user_id": "user_001",
     "event_type": "page_view",
@@ -25,9 +44,9 @@ body {
     }
 }
 
-if user doesn't exist, we add them to db of users
-validate event_type?? Don't think so
-metadata is json object
+
+
+
 
 
 2. **GET /api/interactions?user_id={user_id}&event_type={event_type}**
