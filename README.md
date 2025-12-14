@@ -15,3 +15,8 @@ datasource db {
 
 From the server directory, run:
     pytest
+
+## Running application
+
+cd to interaction-tracker/server and run:
+  uvicorn src.main:app --reload
