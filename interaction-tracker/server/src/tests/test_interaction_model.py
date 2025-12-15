@@ -1,7 +1,7 @@
 from src.main import app
 from fastapi.testclient import TestClient
 
-#client = TestClient(app)
+# client = TestClient()
 
 def test_addition():
     """Test that 1 + 1 equals 2"""
@@ -10,25 +10,21 @@ def test_addition():
 
 
 
-# # test interaction creation 
-# def test_create_interaction_return_201_and_object():  # pytest function
-#     response = client.post("/api/interactions", 
-#         json={
-#             "user_id": "user_001",
-#             "event_type": "page_view",
-#             "metadata": {
-#                 "page": "/dashboard",
-#                 "referrer": "https://google.com",
-#                 "device": "desktop",
-#                 "browser": "Chrome"
-#             }
-#         }  
-#     )  # Use TestClient
+# test interaction creation 
+def test_create_interaction_return_201_and_object():  # pytest function
+    with TestClient(app=app) as client:
+        response = client.post(
+            "/api/interactions",
+            json={
+                "user_id": "user_001",
+                "event_type": "page_view",
+                "metadata": {"page": "/dashboard"}
+            },
+        )
 
-
-#     assert response.status_code == 201
-#     data = response.json() 
-#     assert isinstance(data, dict) 
+    assert response.status_code == 201
+    data = response.json() 
+    assert isinstance(data, dict) 
 
 
 # def test_create_interaction_detects_badly_formatted_data():
