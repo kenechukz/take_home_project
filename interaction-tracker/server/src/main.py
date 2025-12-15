@@ -2,15 +2,18 @@
 FastAPI application entry point for Interaction Tracker
 """
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from src.routes import interactions
 from fastapi.middleware.cors import CORSMiddleware
+from src.db import lifespan
+from src.db import db
 
 # Create FastAPI app instance
 app = FastAPI(
     title="Interaction Tracker API",
     description="API for tracking user interactions",
-    version="1.0.0"
+    version="1.0.0",
+    lifespan=lifespan
 )
 app.include_router(interactions.router, prefix="/api")
 
@@ -22,6 +25,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 
 @app.get("/")
@@ -37,6 +41,17 @@ async def health_check():
         "status": "healthy",
         "service": "interaction-tracker-api"
     }
+
+
+@app.get("/db/health")
+async def db_health():
+    """Checks DB connectivity via a lightweight query."""
+    try:
+        # If the table doesn't exist yet, this will raise
+        await db.interaction.count()
+        return {"db": "ok"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"DB check failed: {e}")
 
 
 # Import and include routers

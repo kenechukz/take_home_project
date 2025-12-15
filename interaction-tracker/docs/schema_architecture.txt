@@ -12,3 +12,10 @@ interaction {
 
 Created index on user_id and event_type as we can filter interactions by these attributes,
 and indexes will make lookups quicker 
+
+
+Anywhere you need the database:
+
+from src.db import db
+
+await db.user.find_many()
