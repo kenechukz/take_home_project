@@ -3,7 +3,7 @@ from typing import Optional
 from src.schemas import InteractionCreatePayload, EventType
 from src.services.interactions import create_interaction as create_interaction_service
 from src.services.interactions import retrieve_interaction as retrieve_interaction_service
-from src.services.interactions import retrieve_interaction as interaction_summary_statistics_service
+from src.services.interactions import interaction_summary_statistics_service
 
 
 router = APIRouter(prefix="/interactions", tags=["interactions"])
@@ -36,7 +36,7 @@ async def interaction_summary_statistics():
 
     stats = await interaction_summary_statistics_service()
 
-    return 
+    return stats
 
 
 
