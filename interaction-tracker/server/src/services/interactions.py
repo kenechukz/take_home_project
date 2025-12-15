@@ -1,5 +1,7 @@
 from prisma import Json
 from src.db import db
+from src.schemas import EventType
+from typing import Optional
 
 
 async def create_interaction(interaction: dict):
@@ -12,3 +14,18 @@ async def create_interaction(interaction: dict):
             'metadata': metadata_value,
         }
     )
+
+
+async def retrieve_interaction(user_id: Optional[str], event_type:Optional[EventType]):
+
+    where = {}
+
+    if user_id:
+        where["user_id"] = user_id
+
+    if event_type:
+        where["event_type"] = event_type.value
+
+
+
+    return await db.interaction.find_many(where=where)
