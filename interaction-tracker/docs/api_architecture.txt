@@ -75,4 +75,4 @@ GET /api/interactions?user_id=user_001&event_type=page_view - both filters:
         - Count by user
         - Most active user
 
-will use pandas for pyspark for this
+will use pandas or pyspark for this

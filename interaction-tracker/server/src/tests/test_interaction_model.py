@@ -51,9 +51,24 @@ def test_create_interaction_detects_invalid_type():
     with TestClient(app=app) as client:
         response = client.post("/api/interactions", 
             json={ "user_id": "user_123", "event_type": 123, "metadata": "not-an-object" }
-        )  # Use TestClient
+        )
     assert response.status_code == 422
 
 
 # # def test_missing_user_id_raises_validation_error()
-# # def test_get_interactions_filters_by_user_id()
+
+
+def test_get_interactions_filters_by_user_id():
+    with TestClient(app=app) as client:
+        response = client.get("/api/interactions?user_id=user_001")
+    assert response.status_code == 200
+
+def test_get_interactions_filters_by_event_type():
+    with TestClient(app=app) as client:
+        response = client.get("/api/interactions?event_type=click")
+    assert response.status_code == 200
+
+def test_get_interactions_filters_by_user_id_and_event_type():
+    with TestClient(app=app) as client:
+        response = client.get("/api/interactions?user_id=user_001&event_type=page_view")
+    assert response.status_code == 200
