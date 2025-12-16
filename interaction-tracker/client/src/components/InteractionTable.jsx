@@ -14,6 +14,7 @@ export default function InteractionTable() {
       <td>{i.user_id}</td>
       <td>{i.event_type}</td>
       <td>{new Date(i.created_at).toLocaleString()}</td>
+      <td>{JSON.stringify(i.metadata)}</td>
     </tr>
   ))
 
@@ -25,6 +26,7 @@ export default function InteractionTable() {
             <th>User</th>
             <th>Event</th>
             <th>Time</th>
+            <th>Metadata</th>
           </tr>
         </thead>
         <tbody>{rows}</tbody>

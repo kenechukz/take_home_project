@@ -28,7 +28,7 @@ async def retrieve_interaction(user_id: Optional[str], event_type:Optional[Event
 
 
 
-    return await db.interaction.find_many(where=where)
+    return await db.interaction.find_many(where=where, order={'created_at': 'desc'})
 
 
 def format_group_count_data(group_count: List[Dict[str, Any]], group_name: str):

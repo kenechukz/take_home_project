@@ -7,6 +7,11 @@ export async function createInteraction(data) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   });
+
+  if (!res.ok) {
+    throw new Error(`Failed to create interaction: ${res.status}`);
+  }
+  
   return res.json();
 }
 

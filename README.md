@@ -52,3 +52,10 @@ Change into the server directory and start the backend server:
 cd interaction-tracker/server
 uvicorn src.main:app --reload
 ```
+
+## Technologies Used
+
+- Backend: FastAPI, Prisma, PostgreSQL
+- Frontend: React, Mantine UI
+- Testing: pytest
+- Infrastructure: Docker, Docker Compose
