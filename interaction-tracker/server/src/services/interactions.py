@@ -31,21 +31,6 @@ async def retrieve_interaction(user_id: Optional[str], event_type:Optional[Event
     return await db.interaction.find_many(where=where)
 
 
-async def retrieve_interaction(user_id: Optional[str], event_type:Optional[EventType]):
-
-    where = {}
-
-    if user_id:
-        where["user_id"] = user_id
-
-    if event_type:
-        where["event_type"] = event_type.value
-
-
-
-    return await db.interaction.find_many(where=where)
-
-
 def format_group_count_data(group_count: List[Dict[str, Any]], group_name: str):
     data = []
     for item in group_count:
