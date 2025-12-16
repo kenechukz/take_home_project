@@ -28,6 +28,7 @@ export default function InteractionForm() {
         value={eventType}
         onChange={setEventType}
         mt="sm"
+        size="sm"
       />
       <Button mt="md" onClick={handleSubmit}>
         Create Interaction

@@ -13,7 +13,7 @@ export default function InteractionTable() {
     <tr key={i.id}>
       <td>{i.user_id}</td>
       <td>{i.event_type}</td>
-      <td>{new Date(i.timestamp).toLocaleString()}</td>
+      <td>{new Date(i.created_at).toLocaleString()}</td>
     </tr>
   ))
 

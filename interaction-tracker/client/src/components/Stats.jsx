@@ -14,8 +14,10 @@ export default function Stats() {
   return (
     <Card shadow="sm">
       <Group>
-        <Text>Total: {stats.total}</Text>
-        <Text>Most Active: {stats.most_active_user}</Text>
+        <Text>Total Users: {stats.count}</Text>
+        <Text>
+        Most Active: {stats.most_active_user ? `${stats.most_active_user.user_id} (${stats.most_active_user.count})` : 'N/A'}
+        </Text>
       </Group>
     </Card>
   )
