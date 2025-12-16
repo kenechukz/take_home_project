@@ -42,7 +42,7 @@ pytest
 ```bash
 cd interaction-tracker/client
 npm run dev
-
+```
 
 ### Backend
 
