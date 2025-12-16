@@ -59,7 +59,7 @@ async def db_health():
         raise HTTPException(status_code=500, detail=f"DB check failed: {e}")
 
 
-# ---- Exception handlers (dev-friendly) ----
+# ---- Exception handlers ----
 logger = logging.getLogger("interaction-tracker")
 
 
