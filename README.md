@@ -37,7 +37,16 @@ pytest
 
 ## Running the application
 
-Change into the server directory and start the application:
+### Frontend
+
+```bash
+cd interaction-tracker/client
+npm run dev
+
+
+### Backend
+
+Change into the server directory and start the backend server:
 
 ```bash
 cd interaction-tracker/server
