@@ -5,12 +5,13 @@ import { createInteraction } from '../api/interactions'
 export default function InteractionForm() {
   const [userId, setUserId] = useState('')
   const [eventType, setEventType] = useState('click')
+  const [metaData, setMetaData] = useState({})
 
   async function handleSubmit() {
     await createInteraction({
       user_id: userId,
       event_type: eventType,
-      metadata: {}
+      metadata: metaData
     })
     alert('Interaction created')
   }
@@ -29,6 +30,11 @@ export default function InteractionForm() {
         onChange={setEventType}
         mt="sm"
         size="sm"
+      />
+      <TextInput
+        label="Metadata"
+        value={metaData}
+        onChange={(e) => setMetaData(e.target.value)}
       />
       <Button mt="md" onClick={handleSubmit}>
         Create Interaction
