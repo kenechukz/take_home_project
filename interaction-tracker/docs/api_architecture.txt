@@ -75,4 +75,9 @@ GET /api/interactions?user_id=user_001&event_type=page_view - both filters:
         - Count by user
         - Most active user
 
-will use pandas or pyspark for this
+What group by data looks like from documentation (Prisma):
+results = await db.profile.group_by(['country'], count=True)
+# [
+#   {'country': 'Denmark', '_count': {'_all': 20}},
+#   {'country': 'Scotland', '_count': {'_all': 1}},
+# ]
