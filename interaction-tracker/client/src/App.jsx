@@ -8,7 +8,7 @@ function App() {
   return (
     <Center h="200vh">
       <Container size="lg">
-        <Title mb="md">Interaction Tracker</Title>
+        <Title mb="md" pl={200} pb={20}>Interaction Tracker</Title>
         <Stack spacing="xl">
           <InteractionForm />
           <h2>Interaction Summary Statistics</h2>
@@ -16,7 +16,7 @@ function App() {
           <Stats />
           <h2>Interaction Table</h2>
           <InteractionTable />
-          
+
         </Stack>
       </Container>
     </Center>

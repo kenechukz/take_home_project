@@ -10,8 +10,7 @@ def test_addition():
 
 
 
-# test interaction creation 
-def test_create_interaction_return_201_and_object():  # pytest function
+def test_create_interaction_return_201_and_object():
     with TestClient(app=app) as client:
         response = client.post(
             "/api/interactions",
@@ -25,6 +24,20 @@ def test_create_interaction_return_201_and_object():  # pytest function
     assert response.status_code == 201
     data = response.json() 
     assert isinstance(data, dict) 
+
+def test_create_interaction_no_metadata():
+    """
+    We expect a successful request as metadata is optional
+    """
+    with TestClient(app=app) as client:
+        response = client.post("/api/interactions", 
+            json={
+                "user_id": "user_123",
+                "event_type": "page_view",
+            }  
+        )  # Use TestClient
+
+    assert response.status_code == 201
 
 
 def test_create_interaction_detects_badly_formatted_data():
@@ -56,17 +69,17 @@ def test_create_interaction_detects_invalid_type():
     assert response.status_code == 422
 
 
-def test_get_interactions_filters_by_user_id():
+def test_get_interactions_filters_by_user_id_with_no_error():
     with TestClient(app=app) as client:
         response = client.get("/api/interactions?user_id=user_001")
     assert response.status_code == 200
 
-def test_get_interactions_filters_by_event_type():
+def test_get_interactions_filters_by_event_type_with_no_error():
     with TestClient(app=app) as client:
         response = client.get("/api/interactions?event_type=click")
     assert response.status_code == 200
 
-def test_get_interactions_filters_by_user_id_and_event_type():
+def test_get_interactions_filters_by_user_id_and_event_type_with_no_error():
     with TestClient(app=app) as client:
         response = client.get("/api/interactions?user_id=user_001&event_type=page_view")
     assert response.status_code == 200
