@@ -11,9 +11,12 @@ function App() {
         <Title mb="md">Interaction Tracker</Title>
         <Stack spacing="xl">
           <InteractionForm />
+          <h2>Interaction Summary Statistics</h2>
           <StatsTable />
           <Stats />
+          <h2>Interaction Table</h2>
           <InteractionTable />
+          
         </Stack>
       </Container>
     </Center>
