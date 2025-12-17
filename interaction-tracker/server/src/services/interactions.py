@@ -5,15 +5,16 @@ from typing import Optional, List, Dict, Any
 
 
 async def create_interaction(interaction: dict):
-    metadata = interaction.get('metadata')
-    metadata_value = Json(metadata) if metadata is not None else None
-    return await db.interaction.create(
-        data={
+    data={
             'user_id': interaction['user_id'],
             'event_type': interaction['event_type'],
-            'metadata': metadata_value,
         }
-    )
+    metadata = interaction.get('metadata')
+
+    if metadata is not None:
+        data['metadata'] = Json(metadata)
+    
+    return await db.interaction.create(data=data)
 
 
 async def retrieve_interaction(user_id: Optional[str], event_type:Optional[EventType]):

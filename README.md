@@ -2,7 +2,7 @@
 
 Here's the project.
 
-## Database connection
+## Database connection (if not using docker image)
 
 In `interaction-tracker/server/prisma/schema.prisma`, specify your database provider and URL.
 
@@ -37,20 +37,39 @@ pytest
 
 ## Running the application
 
-### Frontend
+### Backend
+
+** Docker method:
 
 ```bash
-cd interaction-tracker/client
-npm run dev
+cd interaction-tracker/infra/docker
+docker-compose up --build
 ```
 
-### Backend
+** when you are ready to stop application run:
+
+```bash
+docker-compose down
+```
+
+** Note, it's recommended to run backend then frontend after
+
+** Manual method:
+Prequisite:
+Set up db connection and migrate prisma schemas
 
 Change into the server directory and start the backend server:
 
 ```bash
 cd interaction-tracker/server
 uvicorn src.main:app --reload
+```
+
+### Frontend
+
+```bash
+cd interaction-tracker/client
+npm run dev
 ```
 
 ## Technologies Used
