@@ -125,6 +125,9 @@ pip install -r requirements.txt
 # Run migrations
 prisma migrate deploy
 
+# Generate prisma client
+prisma generate
+
 # Start the server
 uvicorn src.main:app --reload
 ```
