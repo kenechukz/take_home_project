@@ -163,6 +163,13 @@ For verbose output:
 pytest -v
 ```
 
+## Video Demonstration
+
+
+https://github.com/user-attachments/assets/2c2affd2-ec34-4468-b3a3-3d7dcd05be5e
+
+
+
 ## API Endpoints
 
 ### Create Interaction
