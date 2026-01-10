@@ -1,6 +1,6 @@
 # Interaction Tracker
 
-A full-stack application that tracks user interactions (clicks, page views, form submissions) and displays them in a dashboard with summary statistics.
+A full-stack application where you can log user interactions (clicks, page views, form submissions) and displays them in a dashboard with summary statistics.
 
 ## Features
 
